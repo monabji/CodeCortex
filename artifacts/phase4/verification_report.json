@@ -1,0 +1,39 @@
+{
+  "baseline_test_metrics": {
+    "count": 58333,
+    "mae": 0.7505175824741915,
+    "pearson": 0.42537385097588487,
+    "rmse": 1.0052100160825719,
+    "spearman": 0.4116795900505779
+  },
+  "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+  "development_only": false,
+  "diagnostic_plot_sha256": "b00de9957b8f9c3225c84132b239649fd0a41f6f002035fff77035d02f64d940",
+  "exact_development_feature_join_verified": true,
+  "grouped_diagnostics_verified": true,
+  "live_test_reencoding": {
+    "encoder_frozen": true,
+    "max_absolute_error": 2.8014183044433594e-06,
+    "records": 6
+  },
+  "normalization_verified_train_only": true,
+  "primary_test_metrics": {
+    "count": 58333,
+    "mae": 0.6389825415883293,
+    "pearson": 0.5661342512335875,
+    "rmse": 0.9338621039849587,
+    "spearman": 0.5761692941182166
+  },
+  "selected_epoch": 2,
+  "status": "verified",
+  "test_artifacts_verified": true,
+  "test_sample_verified": true,
+  "validation_metrics": {
+    "count": 58363,
+    "mae": 0.5994859238955711,
+    "pearson": 0.6281018213173293,
+    "rmse": 0.8216961680255248,
+    "spearman": 0.6072016285801565
+  },
+  "verification_code_sha256": "0eb4448e5717beba4a910b22cb9e8a407ebf4e411052cb076929ad8811e014a6"
+}

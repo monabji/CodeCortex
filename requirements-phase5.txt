@@ -1,0 +1,7 @@
+# Use the Phase 4 environment; install CPU/CUDA PyTorch separately as documented.
+-r requirements-phase4.txt
+fastapi==0.141.1
+starlette==1.6.0
+pydantic==2.13.5
+uvicorn==0.53.0
+httpx==0.28.1

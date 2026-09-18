@@ -1,0 +1,65 @@
+{
+  "status": "verified",
+  "phase": 5,
+  "verified_date": "2026-09-18",
+  "scope": "Local frozen-model FastAPI and Next.js product integration",
+  "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+  "model_version": "phase4_frozen_esm_mlp_v1",
+  "backend": {
+    "command": "./.venv-phase3-cpu/Scripts/python.exe -m unittest discover -s tests -v",
+    "tests_passed": 49,
+    "phase5_tests_passed": 23,
+    "exit_code": 0
+  },
+  "frontend": {
+    "working_directory": "web",
+    "tests_passed": 3,
+    "typecheck": "passed",
+    "lint": "passed",
+    "production_build": "passed"
+  },
+  "real_inference": {
+    "cpu_report": "artifacts/phase5/inference_verification.json",
+    "cuda_report": "artifacts/phase5/cuda_inference_verification.json",
+    "saved_validation_predictions_per_device": 5,
+    "cpu_max_absolute_error": 1.7136335372924805e-7,
+    "cuda_max_absolute_error": 1.0013580322265625e-5,
+    "absolute_tolerance": 2e-5,
+    "boundary_position_scans": "verified",
+    "whole_protein_mutations": 57,
+    "full_csv_contents": "verified",
+    "encoder_and_head_frozen": true,
+    "max_1024_residue_cuda_prediction": "passed",
+    "max_length_request_observed_seconds": 1.0479694
+  },
+  "browser": {
+    "preview": "http://127.0.0.1:3010",
+    "api": "http://127.0.0.1:8010",
+    "single_prediction": "passed",
+    "wild_type_mismatch_rejection_and_stale_result_removal": "passed",
+    "position_scan_19_unique_variants": "passed",
+    "protein_scan_57_variants_ranked_table_and_heatmap": "passed",
+    "model_dataset_units_sign_and_limitations": "passed",
+    "cancel_500_residue_scan_and_unlock_inputs": "passed",
+    "cancelled_scan_progress": "132 / 9500",
+    "full_csv_attachment_download": "passed; browser download event received for direct API attachment",
+    "console_errors": []
+  },
+  "completion_audit": {
+    "canonical_input_validation": "API and client implementations inspected; boundary/domain/schema tests pass",
+    "real_versioned_ddg_prediction": "Pinned encoder, immutable checkpoint, exact saved normalization/features and CPU/CUDA fixture reproduction",
+    "position_and_full_protein_scans": "19 and 19-times-length coverage tests plus real-model and browser verification",
+    "provenance_and_limitations": "Model-info API and rendered model card inspected",
+    "reproducible_heldout_evaluation": "Existing independently verified Phase 4 metrics exposed unchanged; no new evaluation",
+    "bounded_jobs_caches_and_cancellation": "Implementation inspected; capacity, cancel churn, eviction, expiry and failure tests pass",
+    "documentation": "README, docs/STATUS.md, docs/PHASE5_PRODUCT.md and decision log updated",
+    "phase6_unstarted": true
+  },
+  "notes": [
+    "One observed max-length request is not a general latency guarantee.",
+    "Preview is a development server; production build independently passes.",
+    "This records local testing, not a public deployment or calibrated uncertainty.",
+    "No training, fine-tuning, new scientific test evaluation or ThermoMutDB use occurred.",
+    "Phase 4/5 changes remain local and uncommitted; unrelated files and existing 3000/8000 services preserved."
+  ]
+}

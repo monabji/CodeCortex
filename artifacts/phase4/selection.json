@@ -1,0 +1,81 @@
+{
+  "baseline_model_sha256": "288660c4c9fb055ac9ef64819682298669683a4d23bd4b01bd9ff04bb22beec5",
+  "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+  "code_sha256": {
+    "scripts\\train_phase4_primary.py": "4b89fac95af7ce447d1b78905235fef5765484816b80953855e1094555c74aa1",
+    "src\\mutantscope\\baseline.py": "4962b76e7da6ce5fff3c9e766c7d87c408b1dd0e53b1d0450819ac929590f46e",
+    "src\\mutantscope\\esm_features.py": "31e44cff387fd552326547747dcdd1925f1caeb76617a4afd18bcfe2aefd656b",
+    "src\\mutantscope\\primary_model.py": "031857994c07f6ef2f779d71a1eb7649fbd40d03d4a150bc08baff550d1aab4a"
+  },
+  "config": {
+    "batch_size": 512,
+    "cpu_threads": 8,
+    "dropout": 0.1,
+    "hidden_sizes": [
+      256,
+      128
+    ],
+    "huber_delta": 1.0,
+    "learning_rate": 0.001,
+    "max_epochs": 60,
+    "min_delta": 0.0001,
+    "patience": 8,
+    "seed": 20260918,
+    "weight_decay": 0.0001
+  },
+  "counts": {
+    "train": 272372,
+    "validation": 58363
+  },
+  "elapsed_seconds": 213.0358313000179,
+  "encoder": {
+    "add_special_tokens": true,
+    "hidden_size": 480,
+    "inference_dtype": "float32",
+    "layer": 12,
+    "max_residues": 1024,
+    "model_id": "facebook/esm2_t12_35M_UR50D",
+    "padding_side": "right",
+    "pooling": "mean_residues_only",
+    "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "schema_version": "esm2_site_global_difference_v1",
+    "storage_dtype": "float32",
+    "tokenizer": "EsmTokenizer",
+    "truncation": false
+  },
+  "experiment_version": "phase4_frozen_esm_mlp_v1",
+  "feature_blocks": [
+    "s_w",
+    "s_m",
+    "s_m-s_w",
+    "abs(s_m-s_w)",
+    "g_w",
+    "g_m",
+    "g_m-g_w",
+    "abs(g_m-g_w)"
+  ],
+  "feature_dimension": 3840,
+  "loss": "HuberLoss",
+  "normalizer_fitted_split": "train",
+  "optimizer": "AdamW",
+  "phase3_manifest_sha256": "a7fa14638a94e6e979b570067df8c6fb5d9f55f2ffb858e6926af2bdcd1fb7b9",
+  "positive_means": "stabilization",
+  "selected_epoch": 2,
+  "selection_metric": "validation_mae",
+  "source_records_sha256": "9ab645dccece3b9991fd843a374b3a27941efb73044f17d957e39f05dac80dda",
+  "split_seed": 20260918,
+  "split_summary_sha256": "944917e3d232f273babf95fc980c31cd025c8ca32372dc98dd248377558d12ec",
+  "split_version": "megascale_cluster_split_v1",
+  "status": "frozen",
+  "stop_reason": "patience",
+  "test_set_accessed": false,
+  "unit": "kcal/mol",
+  "validation_metrics": {
+    "count": 58363,
+    "mae": 0.5994859238955711,
+    "pearson": 0.6281018213173293,
+    "rmse": 0.8216961680255248,
+    "spearman": 0.6072016285801565
+  },
+  "validation_predictions_sha256": "a277640e91a4d9afcbb1fff591739b5a9e46e48a9d2be6c336e25bcdeaf82844"
+}

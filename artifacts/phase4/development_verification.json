@@ -1,0 +1,16 @@
+{
+  "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+  "development_only": true,
+  "exact_development_feature_join_verified": true,
+  "normalization_verified_train_only": true,
+  "selected_epoch": 2,
+  "status": "verified",
+  "test_artifacts_verified": false,
+  "validation_metrics": {
+    "count": 58363,
+    "mae": 0.5994859238955711,
+    "pearson": 0.6281018213173293,
+    "rmse": 0.8216961680255248,
+    "spearman": 0.6072016285801565
+  }
+}

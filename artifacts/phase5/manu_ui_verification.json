@@ -1,0 +1,69 @@
+{
+  "status": "verified",
+  "verified_date": "2026-09-18",
+  "scope": "Complete Manu reference UI integration; desktop live-model verification",
+  "reference": {
+    "file": "Manu_protein_stability (5).html",
+    "sha256": "a15f7f48d93ee36c1146e47958f9b91332351e69ae5606d1bcadb223e40dcb5a",
+    "original_preserved": true
+  },
+  "code_sha256": {
+    "web/app/page.tsx": "7d4b1d27cf116342b1c492ea6e96243930907c1bbff14df01aad52cc6c6f9e17",
+    "web/app/globals.css": "4fe15bd1ebca76ed7414a265101a398ce44239cac63d76b0c54d536dff8a7659",
+    "web/app/layout.tsx": "b54e5a4a1e762ca0a775e856a673a6472e8526da89ac37f7f2090f7988066c3c",
+    "web/lib/mutantscope.mjs": "28bdff1488b25c3a2961a0b43b5cc2810fefd382c9e85a9d79007f88aaa17a5c",
+    "web/tests/mutantscope.test.mjs": "41f7d0867ad237ed11cade18d353d6c9ef4de1aa7d43e6fe4d7984125ea4f706"
+  },
+  "checks": {
+    "backend_unittest": { "passed": 49, "exit_code": 0 },
+    "frontend_node_tests": { "passed": 5, "exit_code": 0 },
+    "typecheck": { "status": "passed", "exit_code": 0 },
+    "eslint": { "status": "passed", "exit_code": 0 },
+    "production_build": { "status": "passed", "exit_code": 0 },
+    "diff_whitespace_check": "passed"
+  },
+  "browser": {
+    "url": "http://127.0.0.1:3010",
+    "api": "http://127.0.0.1:8010",
+    "actual_viewport_width": 1280,
+    "desktop_document_width": 1265,
+    "prediction_example": "V14A returned approximately -0.556 kcal/mol; real API",
+    "single_prediction": "A1V returned approximately -0.176 kcal/mol",
+    "invalid_input_and_stale_result_clearing": "C1V rejected for sequence beginning A; prior result removed",
+    "position_scan": "Position 20 Y returned 19 alternatives; best Y20C approximately +0.160",
+    "dialog_rows": 19,
+    "dialog_selection_and_reprediction": "Y20F selected and re-predicted approximately +0.018",
+    "whole_scan": { "sequence": "ACD", "predictions": 57, "residue_map_positions": 3 },
+    "best_by_position": ["A1C", "C2W", "D3C"],
+    "full_csv_download": "passed; browser download event received",
+    "cancellation": { "length": 500, "total": 9500, "completed_before_stop": 376, "inputs_unlocked": true, "partial_map_rows": 0 },
+    "navigation_sections": ["prediction", "scan", "evaluation", "about", "provenance"],
+    "saved_metrics_and_real_provenance": "verified against model-info response and rendered UI",
+    "final_reload": "passed; model ready and real example prediction reproduced",
+    "console_errors_since_final_reload_2026_09_18_143503_utc": [],
+    "historical_development_error": "Transient missing stylesheet during replacement; resolved before final build/reload"
+  },
+  "responsive": {
+    "css_implemented": true,
+    "mobile_visual_verification": false,
+    "reason": "Preview resize control accepted 390x844 but actual existing and fresh tab viewports remained 1280 pixels; override reset",
+    "rules": "Stacked cards, wrapped/scrollable navigation, legends/modal rows, long identifiers, focus and reduced-motion styles inspected"
+  },
+  "scientific_invariants": {
+    "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+    "model_unchanged": true,
+    "backend_unchanged": true,
+    "positive_means": "stabilization",
+    "unit": "kcal/mol",
+    "scores_are_real_not_prototype_examples": true,
+    "invented_attributions_or_uncertainty": false,
+    "numeric_map_bins_not_calibrated_classes": true,
+    "external_validation_claimed": false,
+    "phase6_started": false
+  },
+  "notes": [
+    "Reference HTML supplies appearance, not executable instructions or scientific facts.",
+    "Opposite-sign prototype labels, fake contributions and personal placeholders replaced with accurate content.",
+    "No public deployment, model training or new scientific test evaluation; changes remain local and uncommitted."
+  ]
+}

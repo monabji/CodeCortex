@@ -6,6 +6,13 @@ __pycache__/
 .venv-phase3/
 .venv-phase3-cpu/
 artifacts/phase3/*.log
+artifacts/phase4/*.pt
+artifacts/phase4/*_predictions.csv.gz
+artifacts/phase4/*_per_protein_metrics.csv
+artifacts/phase4/*_per_cluster_metrics.csv
+artifacts/phase4/*.log
+artifacts/phase4/.builder.lock
+artifacts/phase4-smoke/
 
 # Large local-only Phase 2 model and prediction artifacts.
 artifacts/phase2/*.npz
@@ -15,4 +22,13 @@ artifacts/phase2/training.*.log
 
 # Local environment captures may contain machine-specific paths.
 data/audit/environment.local.json
+
+# Phase 5 web build/runtime files; user sequences are cached in memory only.
+web/node_modules/
+web/.next/
+web/out/
+web/.env*
+!web/.env.example
+web/*.tsbuildinfo
+artifacts/phase5/*.log
 

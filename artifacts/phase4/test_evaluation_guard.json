@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "baseline_model_sha256": "288660c4c9fb055ac9ef64819682298669683a4d23bd4b01bd9ff04bb22beec5",
+    "checkpoint_sha256": "9eded3ed44ece10615d9ab13aed79ef0324f87f1321653e0d429aa852d3a71ae",
+    "selection_sha256": "770125d7c30817f3f55c64a3f040e69b21b291c60fc9c22139499faae9e309b4",
+    "source_records_sha256": "9ab645dccece3b9991fd843a374b3a27941efb73044f17d957e39f05dac80dda",
+    "split_summary_sha256": "944917e3d232f273babf95fc980c31cd025c8ca32372dc98dd248377558d12ec"
+  },
+  "status": "evaluated",
+  "test_metrics_sha256": "fdeb172d545080302533cbce45059fe434a76e530afb6ebbc8eacd647146de71"
+}
