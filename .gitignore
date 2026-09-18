@@ -3,6 +3,9 @@ data/raw/
 data/processed/
 data/cache/
 __pycache__/
+.venv-phase3/
+.venv-phase3-cpu/
+artifacts/phase3/*.log
 
 # Large local-only Phase 2 model and prediction artifacts.
 artifacts/phase2/*.npz
