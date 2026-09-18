@@ -1,0 +1,15 @@
+# Source and derived data are local-only.  The MegaScale archive is ~1 GB.
+data/raw/
+data/processed/
+data/cache/
+__pycache__/
+
+# Large local-only Phase 2 model and prediction artifacts.
+artifacts/phase2/*.npz
+artifacts/phase2/*_predictions.csv.gz
+artifacts/phase2/*_per_protein_metrics.csv
+artifacts/phase2/training.*.log
+
+# Local environment captures may contain machine-specific paths.
+data/audit/environment.local.json
+

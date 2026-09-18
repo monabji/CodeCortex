@@ -1,0 +1,280 @@
+{
+  "archive_members": [
+    {
+      "compressed_bytes": 96,
+      "name": "__MACOSX/._Processed_K50_dG_datasets",
+      "uncompressed_bytes": 178
+    },
+    {
+      "compressed_bytes": 209854627,
+      "name": "Processed_K50_dG_datasets/Tsuboyama2023_Dataset2_Dataset3_20230416.csv",
+      "uncompressed_bytes": 697658024
+    },
+    {
+      "compressed_bytes": 96,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Tsuboyama2023_Dataset2_Dataset3_20230416.csv",
+      "uncompressed_bytes": 178
+    },
+    {
+      "compressed_bytes": 178,
+      "name": "Processed_K50_dG_datasets/.DS_Store",
+      "uncompressed_bytes": 6148
+    },
+    {
+      "compressed_bytes": 53,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._.DS_Store",
+      "uncompressed_bytes": 120
+    },
+    {
+      "compressed_bytes": 446873715,
+      "name": "Processed_K50_dG_datasets/Tsuboyama2023_Dataset1_20230416.csv",
+      "uncompressed_bytes": 1284629306
+    },
+    {
+      "compressed_bytes": 96,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Tsuboyama2023_Dataset1_20230416.csv",
+      "uncompressed_bytes": 178
+    },
+    {
+      "compressed_bytes": 606,
+      "name": "Processed_K50_dG_datasets/Triple_DMS_list.csv",
+      "uncompressed_bytes": 1563
+    },
+    {
+      "compressed_bytes": 200,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Triple_DMS_list.csv",
+      "uncompressed_bytes": 302
+    },
+    {
+      "compressed_bytes": 197283,
+      "name": "Processed_K50_dG_datasets/Single_DMS_list.csv",
+      "uncompressed_bytes": 425270
+    },
+    {
+      "compressed_bytes": 200,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Single_DMS_list.csv",
+      "uncompressed_bytes": 302
+    },
+    {
+      "compressed_bytes": 37869,
+      "name": "Processed_K50_dG_datasets/Double_DMS_list.csv",
+      "uncompressed_bytes": 85739
+    },
+    {
+      "compressed_bytes": 201,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Double_DMS_list.csv",
+      "uncompressed_bytes": 302
+    },
+    {
+      "compressed_bytes": 88905561,
+      "name": "Processed_K50_dG_datasets/Heat_maps_double_DMS.zip",
+      "uncompressed_bytes": 89055076
+    },
+    {
+      "compressed_bytes": 96,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Heat_maps_double_DMS.zip",
+      "uncompressed_bytes": 178
+    },
+    {
+      "compressed_bytes": 267802782,
+      "name": "Processed_K50_dG_datasets/Heat_maps_single_DMS.zip",
+      "uncompressed_bytes": 267946536
+    },
+    {
+      "compressed_bytes": 96,
+      "name": "__MACOSX/Processed_K50_dG_datasets/._Heat_maps_single_DMS.zip",
+      "uncompressed_bytes": 178
+    }
+  ],
+  "audit_schema_version": 1,
+  "audited_at_utc": "2026-09-17T23:40:03.666481+00:00",
+  "primary_table": {
+    "columns": [
+      "name",
+      "dna_seq",
+      "log10_K50_t",
+      "log10_K50_t_95CI_high",
+      "log10_K50_t_95CI_low",
+      "log10_K50_t_95CI",
+      "fitting_error_t",
+      "log10_K50unfolded_t",
+      "deltaG_t",
+      "deltaG_t_95CI_high",
+      "deltaG_t_95CI_low",
+      "deltaG_t_95CI",
+      "log10_K50_c",
+      "log10_K50_c_95CI_high",
+      "log10_K50_c_95CI_low",
+      "log10_K50_c_95CI",
+      "fitting_error_c",
+      "log10_K50unfolded_c",
+      "deltaG_c",
+      "deltaG_c_95CI_high",
+      "deltaG_c_95CI_low",
+      "deltaG_c_95CI",
+      "deltaG",
+      "deltaG_95CI_high",
+      "deltaG_95CI_low",
+      "deltaG_95CI",
+      "aa_seq_full",
+      "aa_seq",
+      "mut_type",
+      "WT_name",
+      "WT_cluster",
+      "log10_K50_trypsin_ML",
+      "log10_K50_chymotrypsin_ML",
+      "dG_ML",
+      "ddG_ML",
+      "Stabilizing_mut",
+      "pair_name"
+    ],
+    "ddg_by_stabilizing_label": {
+      "-": {
+        "maximum": 3.125428981086977,
+        "mean": 0.2933179189097573,
+        "minimum": -3.039950452098897,
+        "numeric_count": 74568
+      },
+      "False": {
+        "maximum": 0.24999055481679155,
+        "mean": -1.3233312919629086,
+        "minimum": -5.721032482331916,
+        "numeric_count": 530882
+      },
+      "True": {
+        "maximum": 4.021803157712932,
+        "mean": 1.4891908787165802,
+        "minimum": 1.0000117851894146,
+        "numeric_count": 2389
+      }
+    },
+    "empty_counts": {
+      "Stabilizing_mut": 0,
+      "WT_cluster": 0,
+      "WT_name": 0,
+      "aa_seq": 0,
+      "aa_seq_full": 0,
+      "dG_ML": 0,
+      "ddG_ML": 0,
+      "deltaG": 0,
+      "deltaG_95CI": 0,
+      "deltaG_95CI_high": 0,
+      "deltaG_95CI_low": 0,
+      "deltaG_c": 0,
+      "deltaG_c_95CI": 0,
+      "deltaG_c_95CI_high": 0,
+      "deltaG_c_95CI_low": 0,
+      "deltaG_t": 0,
+      "deltaG_t_95CI": 0,
+      "deltaG_t_95CI_high": 0,
+      "deltaG_t_95CI_low": 0,
+      "dna_seq": 0,
+      "fitting_error_c": 0,
+      "fitting_error_t": 0,
+      "log10_K50_c": 0,
+      "log10_K50_c_95CI": 0,
+      "log10_K50_c_95CI_high": 0,
+      "log10_K50_c_95CI_low": 0,
+      "log10_K50_chymotrypsin_ML": 0,
+      "log10_K50_t": 0,
+      "log10_K50_t_95CI": 0,
+      "log10_K50_t_95CI_high": 0,
+      "log10_K50_t_95CI_low": 0,
+      "log10_K50_trypsin_ML": 0,
+      "log10_K50unfolded_c": 0,
+      "log10_K50unfolded_t": 0,
+      "mut_type": 0,
+      "name": 0,
+      "pair_name": 566180
+    },
+    "member": "Processed_K50_dG_datasets/Tsuboyama2023_Dataset2_Dataset3_20230416.csv",
+    "mutation_class_counts": {
+      "deletion": 25275,
+      "insertion": 50643,
+      "other": 210118,
+      "single_substitution": 487914,
+      "wild_type": 2348
+    },
+    "non_empty_counts": {
+      "Stabilizing_mut": 776298,
+      "WT_cluster": 776298,
+      "WT_name": 776298,
+      "aa_seq": 776298,
+      "aa_seq_full": 776298,
+      "dG_ML": 776298,
+      "ddG_ML": 776298,
+      "deltaG": 776298,
+      "deltaG_95CI": 776298,
+      "deltaG_95CI_high": 776298,
+      "deltaG_95CI_low": 776298,
+      "deltaG_c": 776298,
+      "deltaG_c_95CI": 776298,
+      "deltaG_c_95CI_high": 776298,
+      "deltaG_c_95CI_low": 776298,
+      "deltaG_t": 776298,
+      "deltaG_t_95CI": 776298,
+      "deltaG_t_95CI_high": 776298,
+      "deltaG_t_95CI_low": 776298,
+      "dna_seq": 776298,
+      "fitting_error_c": 776298,
+      "fitting_error_t": 776298,
+      "log10_K50_c": 776298,
+      "log10_K50_c_95CI": 776298,
+      "log10_K50_c_95CI_high": 776298,
+      "log10_K50_c_95CI_low": 776298,
+      "log10_K50_chymotrypsin_ML": 776298,
+      "log10_K50_t": 776298,
+      "log10_K50_t_95CI": 776298,
+      "log10_K50_t_95CI_high": 776298,
+      "log10_K50_t_95CI_low": 776298,
+      "log10_K50_trypsin_ML": 776298,
+      "log10_K50unfolded_c": 776298,
+      "log10_K50unfolded_t": 776298,
+      "mut_type": 776298,
+      "name": 776298,
+      "pair_name": 210118
+    },
+    "row_count": 776298,
+    "single_substitution_numeric_ddg_count": 389068,
+    "stabilizing_label_counts": {
+      "-": 193556,
+      "False": 579808,
+      "True": 2934
+    },
+    "target_profiles": {
+      "dG_ML": {
+        "dash_placeholder_count": 4537,
+        "empty_count": 0,
+        "maximum": 4.999897929340607,
+        "minimum": -0.9999931416909592,
+        "missing_or_filtered_count": 100831,
+        "numeric_count": 675467,
+        "other_nonnumeric_count": 96294
+      },
+      "ddG_ML": {
+        "dash_placeholder_count": 168459,
+        "empty_count": 0,
+        "maximum": 4.021803157712932,
+        "minimum": -5.721032482331916,
+        "missing_or_filtered_count": 168459,
+        "numeric_count": 607839,
+        "other_nonnumeric_count": 0
+      }
+    },
+    "unique_wild_type_cluster_count": 133,
+    "unique_wild_type_protein_count": 479
+  },
+  "runtime": {
+    "implementation": "cpython",
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source": {
+    "archive": "Processed_K50_dG_datasets.zip",
+    "archive_bytes": 1013678473,
+    "archive_md5": "f7e8c553efee734cf161ee6f2b0a09cf",
+    "doi": "10.5281/zenodo.7992926",
+    "license": "CC-BY-4.0",
+    "record": "https://zenodo.org/records/7992926",
+    "release_version": "v2_230420"
+  }
+}

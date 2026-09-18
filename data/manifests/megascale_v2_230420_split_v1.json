@@ -1,0 +1,52 @@
+{
+  "config": {
+    "seed": 20260918,
+    "source_doi": "10.5281/zenodo.7992926",
+    "source_release": "v2_230420",
+    "split_version": "megascale_cluster_split_v1",
+    "test_fraction": 0.15,
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15
+  },
+  "exclusion_counts": {
+    "ddg_not_numeric": 98846,
+    "mutation_not_single_substitution": 288384
+  },
+  "inconsistent_wild_type_proteins": 0,
+  "initial_validated_candidates": 389068,
+  "integrity": {
+    "cluster_intersections": [],
+    "protein_intersections": [],
+    "wild_type_sequence_sha256_intersections": []
+  },
+  "pipeline_version": 1,
+  "retained_rows": 389068,
+  "runtime": {
+    "implementation": "cpython",
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source": {
+    "archive": "Processed_K50_dG_datasets.zip",
+    "archive_md5": "f7e8c553efee734cf161ee6f2b0a09cf",
+    "member": "Tsuboyama2023_Dataset2_Dataset3_20230416.csv"
+  },
+  "source_rows": 776298,
+  "split_groups": 130,
+  "splits": {
+    "test": {
+      "clusters": 39,
+      "proteins": 63,
+      "records": 58333
+    },
+    "train": {
+      "clusters": 52,
+      "proteins": 294,
+      "records": 272372
+    },
+    "validation": {
+      "clusters": 39,
+      "proteins": 55,
+      "records": 58363
+    }
+  }
+}

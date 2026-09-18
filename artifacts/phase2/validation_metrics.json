@@ -1,0 +1,135 @@
+{
+  "artifacts": {
+    "metrics": "validation_metrics.json",
+    "model": "ridge_baseline_model.npz",
+    "per_protein": "validation_per_protein_metrics.csv",
+    "predictions": "validation_predictions.csv.gz",
+    "sample": "validation_sample.csv"
+  },
+  "candidate_alphas": {
+    "0.0001": {
+      "count": 58363,
+      "mae": 0.7061017061554243,
+      "pearson": 0.4687511338880805,
+      "rmse": 0.910750139491507,
+      "spearman": 0.4242432124885693
+    },
+    "0.001": {
+      "count": 58363,
+      "mae": 0.7061046350170028,
+      "pearson": 0.4687503684529063,
+      "rmse": 0.9107467894195908,
+      "spearman": 0.42424063182883465
+    },
+    "0.01": {
+      "count": 58363,
+      "mae": 0.7061378764556376,
+      "pearson": 0.46874159205539595,
+      "rmse": 0.910719169205681,
+      "spearman": 0.42422797173134685
+    },
+    "0.1": {
+      "count": 58363,
+      "mae": 0.7068063919611174,
+      "pearson": 0.4685577451834841,
+      "rmse": 0.9109471271255183,
+      "spearman": 0.4240065599400885
+    },
+    "1.0": {
+      "count": 58363,
+      "mae": 0.7219573139282673,
+      "pearson": 0.4640718778771043,
+      "rmse": 0.9287750301659533,
+      "spearman": 0.4199299844927291
+    },
+    "10.0": {
+      "count": 58363,
+      "mae": 0.774776339580806,
+      "pearson": 0.4510451510151151,
+      "rmse": 0.9989243312751248,
+      "spearman": 0.4081620103379791
+    }
+  },
+  "counts": {
+    "train": 272372,
+    "validation": 58363
+  },
+  "environment": {
+    "numpy": "2.4.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "experiment_version": "phase2_ridge_baseline_v1",
+  "feature_schema": {
+    "count": 45,
+    "names": [
+      "wild_type_A",
+      "wild_type_C",
+      "wild_type_D",
+      "wild_type_E",
+      "wild_type_F",
+      "wild_type_G",
+      "wild_type_H",
+      "wild_type_I",
+      "wild_type_K",
+      "wild_type_L",
+      "wild_type_M",
+      "wild_type_N",
+      "wild_type_P",
+      "wild_type_Q",
+      "wild_type_R",
+      "wild_type_S",
+      "wild_type_T",
+      "wild_type_V",
+      "wild_type_W",
+      "wild_type_Y",
+      "mutant_A",
+      "mutant_C",
+      "mutant_D",
+      "mutant_E",
+      "mutant_F",
+      "mutant_G",
+      "mutant_H",
+      "mutant_I",
+      "mutant_K",
+      "mutant_L",
+      "mutant_M",
+      "mutant_N",
+      "mutant_P",
+      "mutant_Q",
+      "mutant_R",
+      "mutant_S",
+      "mutant_T",
+      "mutant_V",
+      "mutant_W",
+      "mutant_Y",
+      "normalized_position",
+      "sequence_length",
+      "delta_hydropathy",
+      "delta_side_chain_volume",
+      "delta_charge_ph7"
+    ]
+  },
+  "selected_alpha": 0.0001,
+  "selected_validation_metrics": {
+    "count": 58363,
+    "mae": 0.7061017061554243,
+    "pearson": 0.4687511338880805,
+    "rmse": 0.910750139491507,
+    "spearman": 0.4242432124885693
+  },
+  "selection_protocol": "Train model/scaler on train only; select alpha by validation MAE only; test split was not loaded or evaluated.",
+  "source_records_sha256": "9ab645dccece3b9991fd843a374b3a27941efb73044f17d957e39f05dac80dda",
+  "split_manifest": {
+    "seed": 20260918,
+    "version": "megascale_cluster_split_v1"
+  },
+  "test_set_accessed": false,
+  "training_mean_control_validation_metrics": {
+    "count": 58363,
+    "mae": 0.7983808701161748,
+    "pearson": -3.782183359535948e-18,
+    "rmse": 1.0302645908971424,
+    "spearman": null
+  }
+}

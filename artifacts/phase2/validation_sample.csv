@@ -1,0 +1,6 @@
+source_row,wild_type_name,mutation,observed_ddg_kcal_mol,predicted_ddg_kcal_mol,residual_kcal_mol
+129668,1ZHC.pdb,D5M,-0.028231,-0.260594,-0.232363
+371933,v2_2LC2.pdb,N13G,0.057988,-0.840377,-0.898366
+386544,1IFY.pdb,S1H,-0.143455,-0.306112,-0.162657
+424066,1URF.pdb,K15I,-0.024485,-0.257164,-0.232678
+454271,3V1A.pdb,N33S,-0.352146,-0.458889,-0.106743
