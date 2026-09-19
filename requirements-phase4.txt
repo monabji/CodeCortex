@@ -1,3 +1,0 @@
-# CPU PyTorch 2.12.1 is supplied by the approved local environment.
--r requirements-phase3-common.txt
-matplotlib==3.10.8

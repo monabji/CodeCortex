@@ -1,3 +1,0 @@
-# Windows CPython 3.14; CUDA 13.0 wheel supports the local RTX 5070.
-torch @ https://download.pytorch.org/whl/cu130/torch-2.12.1%2Bcu130-cp314-cp314-win_amd64.whl#sha256=d1cd8a4fd0556b2604db5447d9298323b8fba1ba67501fb3d8b22485c764a3a6
--r requirements-phase3-common.txt

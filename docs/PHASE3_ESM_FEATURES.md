@@ -16,7 +16,7 @@ Each unique wild type is encoded once and its residue vectors reused across muta
 
 ```powershell
 python -m venv .venv-phase3
-./.venv-phase3/Scripts/python.exe -m pip install -r requirements-phase3.txt
+./.venv-phase3/Scripts/python.exe -m pip install -r requirements.txt
 ./.venv-phase3/Scripts/python.exe scripts/build_phase3_features.py --device cuda --report artifacts/phase3/extraction_report.json
 ./.venv-phase3/Scripts/python.exe scripts/verify_phase3_features.py --device cuda --report artifacts/phase3/verification_report.json
 python -m unittest discover -s tests -v
@@ -48,7 +48,7 @@ The approved CPU encoder was benchmarked without targets on training sequences. 
 
 ```powershell
 python -m venv --system-site-packages .venv-phase3-cpu
-./.venv-phase3-cpu/Scripts/python.exe -m pip install -r requirements-phase3-common.txt
+./.venv-phase3-cpu/Scripts/python.exe -m pip install -r requirements.txt
 ./.venv-phase3-cpu/Scripts/python.exe scripts/build_phase3_features.py --device cpu --cpu-threads 16 --batch-size 32 --local-files-only --report artifacts/phase3/extraction_report.json
 ./.venv-phase3-cpu/Scripts/python.exe scripts/verify_phase3_features.py --device cpu --local-files-only --report artifacts/phase3/verification_report.json
 ```

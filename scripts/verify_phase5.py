@@ -81,7 +81,7 @@ def verify(args):
         assert len(saved_rows) == 57 and {row["mutation"] for row in saved_rows} == {row["mutation"] for row in job["predictions"]}
         assert all(row["unit"] == "kcal/mol" and row["positive_means"] == "stabilization" and row["model_version"] == service.info["model_version"] for row in saved_rows)
         assert client.get("/scan/jobs/missing").status_code == 404
-    names = ("src/mutantscope/inference.py", "src/mutantscope/api.py", "src/mutantscope/scan_jobs.py", "scripts/serve_phase5.py", "scripts/verify_phase5.py", "requirements-phase5.txt")
+    names = ("src/mutantscope/inference.py", "src/mutantscope/api.py", "src/mutantscope/scan_jobs.py", "scripts/serve_phase5.py", "scripts/verify_phase5.py", "requirements.txt")
     report = {"status": "verified", "phase": 5, "model_version": info["model_version"],
         "checkpoint_sha256": info["checkpoint_sha256"], "feature_schema": info["feature_schema"],
         "encoder": info["encoder"], "dataset": info["dataset"], "split_version": info["split_version"],

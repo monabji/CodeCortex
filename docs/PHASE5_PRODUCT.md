@@ -2,7 +2,7 @@
 
 ## Scope
 
-FastAPI and Next.js expose single prediction, position scan and whole-protein scan with the verified Phase 4 checkpoint. The pinned encoder, 3,840-feature schema, training normalizer, raw ΔΔG convention and selected epoch remain fixed. Phase 6 is unstarted.
+FastAPI and Next.js expose single prediction, position scan and whole-protein scan with the verified Phase 4 checkpoint. The pinned encoder, 3,840-feature schema, training normalizer, raw ΔΔG convention and selected epoch remain fixed. A separately versioned Phase 6 residual/blend candidate is documented in `docs/PHASE6_IMPROVEMENT.md`; this document remains the Phase 5 compatibility record.
 
 All 15 pre-existing repository Markdown files were read before implementation. Existing Phase 4 work and unrelated local HTML/JSON files are preserved.
 
@@ -11,7 +11,7 @@ All 15 pre-existing repository Markdown files were read before implementation. E
 From the repository root:
 
 ```powershell
-./.venv-phase3-cpu/Scripts/python.exe -m pip install -r requirements-phase5.txt
+./.venv-phase3-cpu/Scripts/python.exe -m pip install -r requirements.txt
 ./.venv-phase3-cpu/Scripts/python.exe scripts/serve_phase5.py
 ```
 
@@ -90,7 +90,7 @@ The real verifier reproduces five saved validation predictions within `2e-5` kca
 
 Live browser checks passed: actual single prediction, residue mismatch rejection with stale result cleared, 19 unique position substitutions, complete 57-result scan with ranked table/position heatmap, provenance/convention/limitations, cancellation of a 9,500-variant job after 132 processed variants with inputs unlocked, and a successful full CSV attachment download. A real 1,024-residue CUDA prediction succeeded in approximately 1.05 seconds on the local RTX 5070; this is one observed request, not a general latency guarantee. The UI shows the top 100 ranked variants for long scans; CSV contains every result. Consolidated evidence is `artifacts/phase5/product_verification.json`.
 
-These are deployment compatibility checks, not training/tuning or another scientific test evaluation. The Phase 4 checkpoint and held-out results remain unchanged. Phase 5 is complete locally; changes are uncommitted. No Phase 6 work was started.
+These are deployment compatibility checks, not training/tuning or another scientific test evaluation. The Phase 4 checkpoint and held-out results remain unchanged. Phase 5 is complete locally; Phase 6 has its own frozen candidate artifacts and verification report. Changes are uncommitted.
 
 ## Manu reference UI revision
 
