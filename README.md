@@ -1,5 +1,5 @@
 
-# Protein Mutation Stability Prediction
+# Protein Mutation Stability
 
 This project estimates how a single amino-acid mutation may affect protein stability. Given a wild-type protein sequence and a mutation such as `V42A`, it predicts the expected change in stability as a continuous ddG value.
 
