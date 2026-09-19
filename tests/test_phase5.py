@@ -33,7 +33,7 @@ from mutantscope.inference import (AMINO_ACID_ORDER, InferenceService, InputErro
 from mutantscope.scan_jobs import ScanJobs
 
 
-class FakeEncoder:
+class FixtureEncoder:
     device = "cpu"
 
     def __init__(self):
@@ -61,10 +61,10 @@ class CapturingHead(torch.nn.Module):
         return features[:, 0] + features[:, 960] / 10
 
 
-def fake_service():
+def fixture_service():
     service = InferenceService.__new__(InferenceService)
     service.spec = EncoderSpec()
-    service.encoder = FakeEncoder()
+    service.encoder = FixtureEncoder()
     service.model = CapturingHead()
     service.mean = np.arange(3840, dtype=np.float32) / 500
     service.scale = 1 + np.arange(3840, dtype=np.float32) / 1000
@@ -143,12 +143,12 @@ class Phase5ValidationTests(unittest.TestCase):
 
 class Phase5InferenceTests(unittest.TestCase):
     def test_feature_layout_normalization_and_prediction_use_checkpoint_contract(self):
-        service = fake_service()
+        service = fixture_service()
         sequence = "ACDE"
         mutation = validate_mutation(sequence, "C2V")
         result = service.predict_one(sequence, mutation.notation)
-        wild = FakeEncoder.residues(sequence)
-        variant = FakeEncoder.residues(mutate(sequence, mutation))
+        wild = FixtureEncoder.residues(sequence)
+        variant = FixtureEncoder.residues(mutate(sequence, mutation))
         sw, sm, gw, gm = wild[1], variant[1], wild.mean(axis=0), variant.mean(axis=0)
         raw = np.concatenate((sw, sm, sm - sw, np.abs(sm - sw), gw, gm, gm - gw, np.abs(gm - gw)))
         expected = (raw - service.mean) / service.scale
@@ -158,7 +158,7 @@ class Phase5InferenceTests(unittest.TestCase):
         self.assertEqual(result["unit"], "kcal/mol")
 
     def test_cache_reuse_isolated_returns_and_checkpoint_keys(self):
-        service = fake_service()
+        service = fixture_service()
         first = service.predict_one("ACDE", "A1V")
         first["ddg_kcal_mol"] = 999
         second = service.predict_one(" acde ", "a1v")
@@ -171,7 +171,7 @@ class Phase5InferenceTests(unittest.TestCase):
         self.assertEqual(len(service.encoder.calls), 4)  # Predictions cannot cross checkpoints.
 
     def test_caches_stay_bounded_and_batch_larger_than_cache_returns_all_rows(self):
-        service = fake_service()
+        service = fixture_service()
         service.prediction_cache_limit = 2
         service.wild_cache_budget = 4 * 480 * 4
         predictions = service.scan_position("ACDE", 1)["predictions"]
@@ -186,7 +186,7 @@ class Phase5InferenceTests(unittest.TestCase):
         self.assertFalse(service.wild_cache)
 
     def test_duplicate_mutations_keep_requested_order_and_progress_cancellation(self):
-        service = fake_service()
+        service = fixture_service()
         mutations = [validate_mutation("ACDE", name) for name in ("A1V", "C2V", "A1V")]
         rows = service.predict_mutations("ACDE", mutations)
         self.assertEqual([row["mutation"] for row in rows], [mutation.notation for mutation in mutations])
@@ -198,7 +198,7 @@ class Phase5InferenceTests(unittest.TestCase):
         self.assertEqual(rows, received)
 
     def test_nonfinite_predictions_fail_instead_of_returning_invalid_json(self):
-        service = fake_service()
+        service = fixture_service()
         service.model = lambda features: torch.full((len(features),), float("nan"))
         with self.assertRaisesRegex(RuntimeError, "Nonfinite inference predictions"):
             service.predict_one("ACDE", "A1V")
@@ -225,7 +225,7 @@ class Phase5InferenceTests(unittest.TestCase):
 
 class Phase5JobTests(unittest.TestCase):
     def test_full_scan_exact_19_times_length_and_progress_is_visible(self):
-        service = fake_service()
+        service = fixture_service()
         jobs = deferred_jobs(service)
         self.addCleanup(jobs.close)
         snapshots = []
@@ -253,7 +253,7 @@ class Phase5JobTests(unittest.TestCase):
         self.assertNotEqual(jobs.snapshot(submitted["job_id"])["predictions"][0]["mutation"], "corrupted")
 
     def test_cancel_queued_and_running_jobs_and_hide_partial_results(self):
-        service = fake_service()
+        service = fixture_service()
         jobs = deferred_jobs(service)
         self.addCleanup(jobs.close)
         queued = jobs.submit("AC")
@@ -275,7 +275,7 @@ class Phase5JobTests(unittest.TestCase):
         self.assertEqual(result["predictions"], [])
 
     def test_capacity_eviction_expiry_and_unknown_job(self):
-        jobs = deferred_jobs(fake_service(), max_pending=2, max_jobs=2, ttl_seconds=10)
+        jobs = deferred_jobs(fixture_service(), max_pending=2, max_jobs=2, ttl_seconds=10)
         self.addCleanup(jobs.close)
         first = jobs.submit("AC")
         jobs.submit("AC")
@@ -297,7 +297,7 @@ class Phase5JobTests(unittest.TestCase):
         self.assertEqual(error.exception.code, "job_not_found")
 
     def test_cancelled_queued_job_eviction_does_not_break_worker(self):
-        jobs = deferred_jobs(fake_service(), max_pending=2, max_jobs=1)
+        jobs = deferred_jobs(fixture_service(), max_pending=2, max_jobs=1)
         self.addCleanup(jobs.close)
         cancelled = jobs.submit("AC")
         jobs.cancel(cancelled["job_id"])
@@ -308,7 +308,7 @@ class Phase5JobTests(unittest.TestCase):
         self.assertEqual(jobs.snapshot(replacement["job_id"])["status"], "completed")
 
     def test_cancel_churn_cannot_exceed_submitted_work_capacity(self):
-        service = fake_service()
+        service = fixture_service()
         jobs = deferred_jobs(service, max_pending=2)
         self.addCleanup(jobs.close)
         jobs.submit("AC")
@@ -329,7 +329,7 @@ class Phase5JobTests(unittest.TestCase):
         self.assertEqual(jobs.submit("AC")["status"], "queued")
 
     def test_job_failure_does_not_expose_internal_errors_or_partial_estimates(self):
-        service = fake_service()
+        service = fixture_service()
         def broken(sequence, mutations, *, progress, cancelled):
             progress([{"internal": "partial"}])
             raise RuntimeError("secret-local-path")
@@ -347,7 +347,7 @@ class Phase5JobTests(unittest.TestCase):
 
 class Phase5ApiTests(unittest.TestCase):
     def test_ready_prediction_position_and_provenance_endpoints(self):
-        service = fake_service()
+        service = fixture_service()
         with TestClient(create_app(service=service)) as client:
             self.assertEqual(client.get("/health").json()["status"], "ready")
             self.assertEqual(client.get("/model-info").json(), service.info)
@@ -371,7 +371,7 @@ class Phase5ApiTests(unittest.TestCase):
             ("/predict", {"sequence": "ACDE", "mutation": "C1V"}, "wild_type_mismatch"),
             ("/predict", {"sequence": "ACDE", "mutation": "A1V:C2D"}, "invalid_mutation"),
             ("/predict", {"sequence": "A" * 1025, "mutation": "A1V"}, "sequence_too_long")]
-        with TestClient(create_app(service=fake_service())) as client:
+        with TestClient(create_app(service=fixture_service())) as client:
             for endpoint, body, code in cases:
                 with self.subTest(endpoint=endpoint, body=body):
                     response = client.post(endpoint, json=body)
@@ -383,7 +383,7 @@ class Phase5ApiTests(unittest.TestCase):
             self.assertEqual(response.json()["error"]["code"], "job_not_found")
 
     def test_protein_submit_poll_and_delete_endpoints(self):
-        with TestClient(create_app(service=fake_service())) as client:
+        with TestClient(create_app(service=fixture_service())) as client:
             submitted = client.post("/scan/protein", json={"sequence": "AC"})
             self.assertEqual(submitted.status_code, 202)
             key = submitted.json()["job_id"]
@@ -399,7 +399,7 @@ class Phase5ApiTests(unittest.TestCase):
             self.assertEqual(client.delete(f"/scan/jobs/{key}").json()["status"], "completed")
 
     def test_scan_queue_capacity_cancel_and_missing_job_http_statuses(self):
-        service = fake_service()
+        service = fixture_service()
         app = create_app(service=service)
         with TestClient(app) as client:
             app.state.jobs.close()
@@ -417,7 +417,7 @@ class Phase5ApiTests(unittest.TestCase):
             self.assertEqual(missing.json()["error"]["code"], "job_not_found")
 
     def test_csv_export_requires_completion_and_preserves_all_sorted_estimates(self):
-        service = fake_service()
+        service = fixture_service()
         app = create_app(service=service)
         with TestClient(app) as client:
             app.state.jobs.close()
@@ -474,7 +474,7 @@ class Phase5ApiTests(unittest.TestCase):
                 self.assertEqual(response.status_code, 503)
                 self.assertNotIn("secret-local-path", response.text)
                 self.assertIn("error", response.json())
-        service = fake_service()
+        service = fixture_service()
         service.predict_one = lambda *args: (_ for _ in ()).throw(RuntimeError("private failure"))
         with self.assertLogs("mutantscope.api", level="ERROR"), TestClient(create_app(service=service), raise_server_exceptions=False) as client:
             response = client.post("/predict", json={"sequence": "AC", "mutation": "A1V"})

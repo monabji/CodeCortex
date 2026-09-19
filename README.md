@@ -3,11 +3,21 @@
 
 This project estimates how a single amino-acid mutation may affect protein stability. Given a wild-type protein sequence and a mutation such as `V42A`, it predicts the expected change in stability as a continuous ddG value.
 
-The project uses the public MegaScale protein-stability dataset. It validates sequences and mutation notation, keeps related proteins separated across training and evaluation splits, and trains a reproducible baseline and frozen-ESM regression head with documented held-out results.
+The project uses the public MegaScale protein-stability dataset. It validates sequences and mutation notation, keeps related proteins separated across training and evaluation splits, and contains code for a ridge baseline and a regression head trained on frozen ESM-2 features.
+
+The ESM-2 encoder is a pretrained feature extractor. It is loaded with its parameters frozen; this repository does not fine-tune or train ESM-2. The trainable component is the 1,016,321-parameter MLP regression head described in `docs/PHASE4_PRIMARY_MLP.md`.
 
 The goal is to help researchers prioritize single mutations for experimental testing. Predictions are computational estimates and are not a replacement for laboratory measurements.
 
 ## Local application (Phase 5, complete)
+
+## Reproducibility status
+
+The public repository contains the source code and aggregate experiment reports, but the trained MLP checkpoint, Phase 2 ridge model, processed records, and large ESM feature caches are stored outside Git. A fresh checkout therefore cannot reproduce the reported predictions without downloading the required data and rebuilding or obtaining the corresponding local artifacts.
+
+The reported Phase 4 metrics are results from the authors' local run. They should be considered publicly reproducible only when the matching artifact bundle is available and its recorded hashes have been checked.
+
+For the complete local reproduction workflow, see `docs/PHASE3_ESM_FEATURES.md`, `docs/PHASE4_PRIMARY_MLP.md`, and `docs/PHASE5_PRODUCT.md`.
 
 FastAPI serves the verified Phase 4 model; Next.js now follows the supplied Manu HTML design: fixed editorial navigation, paper-grid cream/brown/blue styling, and prediction, mutation scan, evaluation, about and provenance sections. Single predictions, 19-substitution position scans, queued protein scans, progress/cancellation and full CSV downloads remain connected to the real API. The residue map shows the best actual substitution at each scanned position; clicking opens its 19-result dialog. The UI preserves kcal/mol, positive-stabilizing convention, model/data provenance, held-out results and scientific limitations. No confidence score or feature attribution is invented.
 

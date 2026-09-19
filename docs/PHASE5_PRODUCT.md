@@ -2,7 +2,7 @@
 
 ## Scope
 
-FastAPI and Next.js expose single prediction, position scan and whole-protein scan with the verified Phase 4 checkpoint. The pinned encoder, 3,840-feature schema, training normalizer, raw ΔΔG convention and selected epoch remain fixed. A separately versioned Phase 6 residual/blend candidate is documented in `docs/PHASE6_IMPROVEMENT.md`; this document remains the Phase 5 compatibility record.
+FastAPI and Next.js expose single prediction, position scan and whole-protein scan with the verified Phase 4 checkpoint. The system uses a pretrained ESM-2 encoder as a frozen feature extractor and a trained MLP regression head. The pinned encoder, 3,840-feature schema, training normalizer, raw ΔΔG convention and selected epoch remain fixed. A separately versioned Phase 6 residual/blend candidate is documented in `docs/PHASE6_IMPROVEMENT.md`; this document remains the Phase 5 compatibility record.
 
 All 15 pre-existing repository Markdown files were read before implementation. Existing Phase 4 work and unrelated local HTML/JSON files are preserved.
 

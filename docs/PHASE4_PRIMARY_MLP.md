@@ -2,7 +2,7 @@
 
 ## Scope and contract
 
-All 14 pre-existing project Markdown files were read before implementation. Phase 4 trains a regression head on the verified Phase 3 development cache. The frozen encoder, eight-block 3,840-feature schema, MegaScale `v2_230420` targets (kcal/mol, positive stabilizing), and `megascale_cluster_split_v1` assignments remain fixed. Phase 5 is outside this work.
+All 14 pre-existing project Markdown files were read before implementation. Phase 4 trains a regression head on the verified Phase 3 development cache. The encoder is a pretrained ESM-2 feature extractor whose parameters remain frozen; Phase 4 trains only the 1,016,321-parameter MLP head. The eight-block 3,840-feature schema, MegaScale `v2_230420` targets (kcal/mol, positive stabilizing), and `megascale_cluster_split_v1` assignments remain fixed. Phase 5 is outside this work.
 
 ## Initial configuration
 

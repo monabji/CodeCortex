@@ -26,7 +26,7 @@ module_spec.loader.exec_module(builder)
 from mutantscope.esm_features import exclusive_cache_lock, iter_cached_features, save_npz_atomic
 
 
-class FakeEncoder:
+class FixtureEncoder:
     calls = 0
 
     def __init__(self, *args):
@@ -34,7 +34,7 @@ class FakeEncoder:
         self.runtime = {"device": "synthetic_test_only"}
 
     def encode(self, sequences):
-        FakeEncoder.calls += len(sequences)
+        FixtureEncoder.calls += len(sequences)
         return [np.repeat(np.array([ord(r) / 100 for r in s], dtype=np.float32)[:, None], 480, axis=1)
                 for s in sequences]
 
@@ -66,16 +66,16 @@ class CacheBuildTests(unittest.TestCase):
         self.temporary.cleanup()
 
     def run_build(self):
-        with patch.object(builder, "FrozenEsmEncoder", FakeEncoder), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(builder, "FrozenEsmEncoder", FixtureEncoder), contextlib.redirect_stdout(io.StringIO()):
             return builder.build(self.args)
 
     def test_resume_uses_cached_vectors_and_reader_checks_provenance(self):
-        FakeEncoder.calls = 0
+        FixtureEncoder.calls = 0
         manifest = self.run_build()
-        self.assertEqual(FakeEncoder.calls, 3)
-        FakeEncoder.calls = 0
+        self.assertEqual(FixtureEncoder.calls, 3)
+        FixtureEncoder.calls = 0
         self.run_build()
-        self.assertEqual(FakeEncoder.calls, 0)
+        self.assertEqual(FixtureEncoder.calls, 0)
         batches = list(iter_cached_features(self.args.cache_dir, "train",
             expected_source_records_sha256=manifest["source_records_sha256"]))
         self.assertEqual(batches[0][1].shape, (1, 3840))
@@ -99,9 +99,9 @@ class CacheBuildTests(unittest.TestCase):
         manifest["shards"] = []
         manifest["known_files"].pop("train/00000.npz")
         path.write_text(json.dumps(manifest))
-        FakeEncoder.calls = 0
+        FixtureEncoder.calls = 0
         self.run_build()
-        self.assertEqual(FakeEncoder.calls, 1)
+        self.assertEqual(FixtureEncoder.calls, 1)
 
     def test_reader_rejects_duplicate_shard_coverage(self):
         self.run_build()

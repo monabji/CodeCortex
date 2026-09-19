@@ -5,7 +5,7 @@
 Evaluate at minimum:
 
 1. the classical baseline;
-2. the frozen ESM-2 mutation-aware MLP.
+2. the mutation-aware MLP trained on features from a frozen pretrained ESM-2 encoder.
 
 Optional zero-shot and parameter-efficient variants must use the same split manifest. Report compute and training differences; never compare models under different leakage conditions as if equivalent.
 
@@ -19,7 +19,7 @@ Phase 3 creates representations, not ddG predictions, so it introduces no MAE, R
 
 ## Phase 4 development selection
 
-The frozen-feature MLP trained on all 272,372 training records, selected epoch 2 by validation MAE, and stopped after eight stale epochs at epoch 10. On all 58,363 validation records: MAE 0.5995 kcal/mol, RMSE 0.8217 kcal/mol, Pearson 0.6281, Spearman 0.6072. These are development results. Independent verification reproduced every validation prediction, proved exact source-feature joins, and recomputed the saved normalizer from training only. The checkpoint and ridge baseline were fingerprinted before test extraction; completed test evaluation cannot be repeated as another selection experiment.
+The MLP regression head trained on all 272,372 training records using features from a frozen pretrained ESM-2 encoder, selected epoch 2 by validation MAE, and stopped after eight stale epochs at epoch 10. On all 58,363 validation records: MAE 0.5995 kcal/mol, RMSE 0.8217 kcal/mol, Pearson 0.6281, Spearman 0.6072. These are development results. The repository's verifier reproduced every saved validation prediction, checked source-feature joins, and recomputed the saved normalizer from training only. The checkpoint and ridge baseline were fingerprinted before test extraction; completed test evaluation cannot be repeated as another selection experiment.
 
 ## Verified Phase 4 held-out results
 
